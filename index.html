@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Daily Life Assistant - Manage your daily tasks, track habits, monitor your mood, stay focused, and review your progress.">
+
+    <meta name="theme-color" content="#6c63ff">
+
+    <title>Daily Life Assistant | Your Daily Productivity Companion</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>🧠 Daily Life Assistant</h1>
+
+        <p id="dailyTip"
+           style="text-align:center; font-style:italic; margin-bottom:10px;"
+           aria-live="polite">
+        </p>
+    </header>
+
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <!-- Tasks Section -->
+        <section class="card" id="todo" aria-labelledby="todo-title">
+
+            <h2 id="todo-title">✅ Tasks</h2>
+
+            <input
+                type="text"
+                id="taskInput"
+                placeholder="Add task"
+                aria-label="Enter a new task"
+                maxlength="100"
+                autocomplete="off"
+            >
+
+            <button type="button" onclick="addTask()">Add</button>
+
+            <ul id="taskList" aria-live="polite"></ul>
+
+            <p
+                id="taskMessage"
+                style="margin-top:10px; font-weight:bold;"
+                role="status"
+                aria-live="polite">
+            </p>
+
+        </section>
+
+
+        <!-- Habit Tracker Section -->
+        <section class="card" id="habit" aria-labelledby="habit-title">
+
+            <h2 id="habit-title">🔥 Habit Tracker</h2>
+
+            <p>Select your habit:</p>
+
+            <select id="habitSelect" aria-label="Select your daily habit">
+
+                <option value="Drink Water">💧 Drink Water</option>
+                <option value="Exercise">🏋️ Exercise</option>
+                <option value="Meditation">🧘 Meditation</option>
+                <option value="Reading">📚 Reading</option>
+                <option value="Healthy Eating">🥗 Healthy Eating</option>
+                <option value="Sleep Early">🛌 Sleep Early</option>
+
+            </select>
+
+            <button type="button" onclick="increaseStreak()">Mark Done</button>
+
+            <p>Streak: <span id="streak">0</span></p>
+
+            <p
+                id="habitDone"
+                style="margin-top:10px; font-weight:bold;"
+                role="status"
+                aria-live="polite">
+            </p>
+
+            <p
+                id="badge"
+                style="margin-top:10px; font-size:18px; font-weight:bold;">
+            </p>
+
+        </section>
+
+
+        <!-- Mood Tracker Section -->
+        <section class="card" id="mood" aria-labelledby="mood-title">
+
+            <h2 id="mood-title">😊 Mood Tracker</h2>
+
+            <button type="button" onclick="setMood('Happy')" aria-label="Happy mood">
+                😄
+            </button>
+
+            <button type="button" onclick="setMood('Normal')" aria-label="Normal mood">
+                😌
+            </button>
+
+            <button type="button" onclick="setMood('Sad')" aria-label="Sad mood">
+                😔
+            </button>
+
+            <p id="moodResult" role="status" aria-live="polite"></p>
+
+        </section>
+
+
+        <!-- Focus Timer Section -->
+        <section class="card" id="timer" aria-labelledby="timer-title">
+
+            <h2 id="timer-title">⏰ Focus Timer</h2>
+
+            <p
+                id="time"
+                role="timer"
+                aria-live="off"
+                aria-atomic="true">
+                25:00
+            </p>
+
+            <button type="button" onclick="startTimer()">Start</button>
+
+            <button type="button" onclick="pauseTimer()">Pause</button>
+
+            <button type="button" onclick="resetTimer()">Reset</button>
+
+        </section>
+
+
+        <!-- Weekly Statistics Section -->
+        <section class="card" id="stats" aria-labelledby="stats-title">
+
+            <h2 id="stats-title">📊 Weekly Summary</h2>
+
+            <canvas
+                id="weeklyChart"
+                role="img"
+                aria-label="Weekly productivity summary chart">
+            </canvas>
+
+            <button type="button" onclick="updateChart()">Refresh Chart</button>
+
+        </section>
+
+    </main>
+
+
+    <!-- Bottom Navigation -->
+    <nav class="nav" aria-label="Main navigation">
+
+        <button type="button" onclick="scrollToSection('todo')">
+            Tasks
+        </button>
+
+        <button type="button" onclick="scrollToSection('habit')">
+            Habit
+        </button>
+
+        <button type="button" onclick="scrollToSection('mood')">
+            Mood
+        </button>
+
+        <button type="button" onclick="scrollToSection('timer')">
+            Timer
+        </button>
+
+        <button type="button" onclick="scrollToSection('stats')">
+            Stats
+        </button>
+
+    </nav>
+
+
+    <!-- External Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
